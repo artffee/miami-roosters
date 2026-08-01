@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miami Roosters — A Coloring Book</title>
+<meta name="description" content="Miami Roosters: A Coloring Book. They own this city, we just drew them — flamingos in sunglasses, gators in Art Deco, and roosters who've never met a stressful moment. Browse, download, and print.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Cinzel:wght@500;600&family=Cinzel+Decorative:wght@700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="funk-blobs" aria-hidden="true"></div>
+<div class="halftone" aria-hidden="true"></div>
+<div class="film-grain" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#top" class="logo">
+      <span class="logo-mark" aria-hidden="true">
+        <span class="logo-ring"></span>
+        <span class="logo-suit">♠</span>
+      </span>
+      <span class="logo-text">
+        <span class="logo-title">Miami Roosters</span>
+        <span class="logo-sub">A Coloring Book</span>
+      </span>
+    </a>
+    <nav class="site-nav">
+      <a href="#viewer">Viewer</a>
+      <a href="#archive">The Deck</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <div class="hero-banner">
+    <img src="assets/banner-diamond-terrace.png" alt="A dandy rooster in white-and-teal regalia stands beside a giant diamond gem and roulette wheel on a terrace overlooking a Miami-deco skyline at sunset, flamingos dancing behind him and a gator dealer at the table.">
+    <div class="hero-banner-fade" aria-hidden="true"></div>
+    <a href="#viewer" class="scroll-cue" aria-label="Scroll to the viewer">⌄</a>
+  </div>
+
+  <section class="hero">
+    <span class="sticker sticker-bite" aria-hidden="true">🐊 They bite</span>
+    <span class="sticker sticker-miami" aria-hidden="true">100% Miami</span>
+
+    <p class="hero-kicker load-in load-in-1">Little Havana · Calle Ocho · Ocean Drive</p>
+    <h1 class="hero-title load-in load-in-2">They own this city.<br><span class="hero-emphasis">We just drew them.</span></h1>
+    <p class="hero-sub load-in load-in-3">Every corner of Little Havana has one — a rooster strutting like he owns the block (because, let's be honest, he probably does). They're loud, they're fabulous, and they're 100% Miami.</p>
+  </section>
+
+  <section id="viewer" class="viewer-section">
+    <div class="table-felt reveal">
+      <div class="spotlight" aria-hidden="true"></div>
+      <div class="starfield" aria-hidden="true">
+        <span class="star"></span><span class="star"></span><span class="star"></span>
+        <span class="star"></span><span class="star"></span><span class="star"></span>
+        <span class="star"></span><span class="star"></span><span class="star"></span>
+        <span class="star"></span>
+      </div>
+
+      <div class="viewer-card-wrap">
+        <div class="viewer-card">
+          <div class="viewer-frame">
+            <img id="viewer-image" src="" alt="Card artwork">
+          </div>
+
+          <div class="viewer-caption">
+            <h2 id="viewer-title">Loading…</h2>
+            <span id="viewer-kind" class="kind-chip"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="viewer-controls">
+        <button id="prev-btn" class="deco-btn" aria-label="Previous card">
+          <span aria-hidden="true">‹</span> Prev
+        </button>
+
+        <div class="page-jump">
+          <span id="page-counter">Card 1 of 8</span>
+          <select id="page-select" aria-label="Jump to card"></select>
+        </div>
+
+        <button id="next-btn" class="deco-btn" aria-label="Next card">
+          Next <span aria-hidden="true">›</span>
+        </button>
+      </div>
+
+      <div class="viewer-actions">
+        <button id="download-btn" class="deco-btn deco-btn-gold">Download</button>
+        <button id="print-btn" class="deco-btn deco-btn-gold">Print</button>
+        <button id="random-btn" class="deco-btn deco-btn-gold">Deal Random</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="archive" class="archive-section">
+    <h2 class="section-title reveal">The Deck</h2>
+    <p class="section-sub reveal">
+      Filter by suit to browse. <span class="legend-page">◆ Printable page</span> means it's blank line art, ready to color —
+      everything else is finished gallery art from the deck, with printable versions on the way.
+    </p>
+
+    <div id="filter-pills" class="filter-pills"></div>
+
+    <div id="archive-grid" class="archive-grid"></div>
+  </section>
+
+  <section id="about" class="about-section">
+    <div class="about-card reveal">
+      <div class="about-corner about-corner-tl" aria-hidden="true">♠</div>
+      <div class="about-corner about-corner-br" aria-hidden="true">♠</div>
+      <h2 class="section-title">About the Book</h2>
+      <p>
+        This coloring book is our love letter to the city's most unbothered residents —
+        flamingos in sunglasses, gators in Art Deco, and roosters who've clearly never
+        met a stressful moment in their lives.
+      </p>
+      <p>
+        20–30 pages of Miami neighborhoods, landmarks, and legend — from Calle Ocho to
+        Ocean Drive — for colorists of every skill level. Grab your gel pens, your
+        markers, whatever — just don't grab the roosters. They bite.
+      </p>
+      <p class="about-tagline">Color loud. Live louder.</p>
+    </div>
+
+    <div class="charity-banner reveal">
+      <p>✨ 10% of net proceeds go straight to supporting the animals that make this city a little weirder and a lot more fun.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Miami Roosters — they own this city, we just drew them.</p>
+  <p class="fine-print">All pages are free to print and color for personal, non-commercial use. <span id="year"></span></p>
+</footer>
+
+<!-- Print-only view: kept out of normal layout, shown via @media print -->
+<div id="print-area">
+  <img id="print-image" src="" alt="">
+</div>
+
+<script src="js/pages-data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
