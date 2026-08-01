@@ -610,7 +610,7 @@ a { color: inherit; }
   border-radius: 999px;
   padding: 11px 26px;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s cubic-bezier(.34,1.56,.64,1);
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.16s cubic-bezier(.34,1.56,.64,1);
   position: relative;
   overflow: hidden;
 }
@@ -625,15 +625,7 @@ a { color: inherit; }
   pointer-events: none;
 }
 
-.deco-btn:hover::before { transform: translateX(120%); }
-
-.deco-btn:hover {
-  background: var(--gold);
-  color: var(--navy-deep);
-  box-shadow: 0 0 22px rgba(205,161,91,0.4);
-}
-
-.deco-btn:active { transform: scaleX(0.92) scaleY(1.06); }
+.deco-btn:active { transform: scaleX(0.94) scaleY(1.04); }
 
 .deco-btn:focus-visible {
   outline: 2px solid var(--cyan);
@@ -645,27 +637,39 @@ a { color: inherit; }
   color: var(--gold-bright);
 }
 
-.deco-btn-gold:hover {
-  background: var(--gold-bright);
-  color: var(--navy-deep);
-}
-
 #download-btn { border-color: var(--cyan); color: var(--cyan); }
-#download-btn:hover { background: var(--cyan); color: var(--navy-deep); box-shadow: 0 0 22px rgba(34,224,255,0.45); }
-
 #print-btn { border-color: var(--pink); color: var(--pink); }
-#print-btn:hover { background: var(--pink); color: var(--navy-deep); box-shadow: 0 0 22px rgba(255,46,106,0.45); }
 
 #random-btn {
   border-color: var(--yellow);
   color: var(--yellow);
-  animation: btnWiggle 3.4s ease-in-out infinite;
+  animation: btnWiggle 3.4s ease-in-out 3;
 }
-#random-btn:hover {
-  background: var(--yellow);
-  color: var(--navy-deep);
-  box-shadow: 0 0 22px rgba(255,217,61,0.5);
-  animation-play-state: paused;
+
+/* Hover-only motion: gated so tap-to-hover on touch devices can't trigger or stick these */
+@media (hover: hover) and (pointer: fine) {
+  .deco-btn:hover::before { transform: translateX(120%); }
+
+  .deco-btn:hover {
+    background: var(--gold);
+    color: var(--navy-deep);
+    box-shadow: 0 0 22px rgba(205,161,91,0.4);
+  }
+
+  .deco-btn-gold:hover {
+    background: var(--gold-bright);
+    color: var(--navy-deep);
+  }
+
+  #download-btn:hover { background: var(--cyan); color: var(--navy-deep); box-shadow: 0 0 22px rgba(34,224,255,0.45); }
+  #print-btn:hover { background: var(--pink); color: var(--navy-deep); box-shadow: 0 0 22px rgba(255,46,106,0.45); }
+
+  #random-btn:hover {
+    background: var(--yellow);
+    color: var(--navy-deep);
+    box-shadow: 0 0 22px rgba(255,217,61,0.5);
+    animation-play-state: paused;
+  }
 }
 
 @keyframes btnWiggle {
@@ -705,7 +709,7 @@ a { color: inherit; }
   background: var(--navy-panel);
   color: var(--ink-dim);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -713,10 +717,12 @@ a { color: inherit; }
 
 .filter-pill .pill-symbol { font-size: 14px; }
 
-.filter-pill:hover {
-  border-color: var(--suit-accent, var(--gold));
-  color: var(--ink);
-  transform: translateY(-2px) rotate(-2deg);
+@media (hover: hover) and (pointer: fine) {
+  .filter-pill:hover {
+    border-color: var(--suit-accent, var(--gold));
+    color: var(--ink);
+    transform: translateY(-2px) rotate(-2deg);
+  }
 }
 
 .filter-pill:active { transform: translateY(0) scale(0.94); }
@@ -739,7 +745,7 @@ a { color: inherit; }
   padding: 14px;
   cursor: pointer;
   box-shadow: 0 16px 34px rgba(0,0,0,0.45);
-  transition: transform 0.35s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s ease;
+  transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s ease;
   position: relative;
   overflow: hidden;
 }
@@ -749,9 +755,15 @@ a { color: inherit; }
 .archive-item:nth-child(4n+3) { transform: rotate(-4deg); }
 .archive-item:nth-child(4n+4) { transform: rotate(6deg); }
 
-.archive-item:hover {
-  transform: translateY(-8px) rotate(0deg) scale(1.02);
-  box-shadow: 0 24px 44px rgba(0,0,0,0.55), 0 0 0 3px var(--suit-accent, var(--gold));
+@media (hover: hover) and (pointer: fine) {
+  .archive-item:hover {
+    transform: translateY(-8px) rotate(0deg) scale(1.02);
+    box-shadow: 0 24px 44px rgba(0,0,0,0.55), 0 0 0 3px var(--suit-accent, var(--gold));
+  }
+
+  .archive-item:hover img {
+    transform: scale(1.04);
+  }
 }
 
 .archive-item:active { transform: translateY(-4px) rotate(0deg) scale(0.98); }
@@ -767,11 +779,7 @@ a { color: inherit; }
   border-radius: 8px;
   background: #fff;
   margin-bottom: 12px;
-  transition: transform 0.4s ease;
-}
-
-.archive-item:hover img {
-  transform: scale(1.04);
+  transition: transform 0.25s ease;
 }
 
 .archive-item h3 {
@@ -901,14 +909,46 @@ a { color: inherit; }
 /* ---------------- Reduced motion ---------------- */
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-  }
   html { scroll-behavior: auto; }
-  .reveal, .reveal-card, .load-in {
+
+  /* Decorative, purely ambient motion: remove entirely */
+  .hero-banner img,
+  .funk-blobs,
+  .logo-ring,
+  .scroll-cue,
+  .star,
+  #random-btn,
+  .sticker,
+  .site-header {
+    animation: none !important;
+  }
+
+  /* Elements whose resting (pre-animation) state is hidden must snap
+     straight to visible, since the animation that would reveal them
+     is now disabled above */
+  .load-in,
+  .sticker {
     opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Scroll-reveal already skips the observer in JS when this is set;
+     this is the no-JS / belt-and-suspenders fallback */
+  .reveal, .reveal-card {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Keep opacity/color feedback on interaction, drop the movement */
+  .deco-btn:active,
+  .filter-pill:active,
+  .filter-pill:hover,
+  .archive-item:active,
+  .archive-item:hover,
+  .viewer-card,
+  .viewer-card.is-dealing,
+  .viewer-card.is-dealing .viewer-frame img,
+  .viewer-card.is-dealing .viewer-caption {
     transform: none !important;
   }
 }

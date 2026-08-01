@@ -3,8 +3,11 @@
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  const DEAL_TRANSITION_MS = 160; // keep in sync with .viewer-frame img / .viewer-caption transition-duration in style.css
+
   let activeSuit = "All";
   let currentIndex = 0;
+  let dealTimeoutId = null;
 
   const sortedPages = [...PAGES].sort((a, b) => {
     const suitDiff = SUITS.findIndex((s) => s.key === a.suit) - SUITS.findIndex((s) => s.key === b.suit);
@@ -177,11 +180,18 @@
       return;
     }
 
+    // Cancel any in-flight deal transition so rapid Prev/Next clicks retarget
+    // cleanly instead of stacking overlapping timers.
+    if (dealTimeoutId !== null) {
+      window.clearTimeout(dealTimeoutId);
+    }
+
     viewerCard.classList.add("is-dealing");
-    window.setTimeout(() => {
+    dealTimeoutId = window.setTimeout(() => {
       applyPage();
       viewerCard.classList.remove("is-dealing");
-    }, 160);
+      dealTimeoutId = null;
+    }, DEAL_TRANSITION_MS);
   }
 
   function step(delta) {
